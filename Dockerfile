@@ -20,6 +20,7 @@ WORKDIR /tmp
 ADD --link "$AVP_RELEASE_URL" .
 ADD --link "$AVP_CHECKSUM_URL" checksums.txt
 RUN cat checksums.txt | grep "$AVP_BIN_NAME" | sha256sum -c
+RUN chmod ugo+x "$AVP_BIN_NAME"
 RUN mv "$AVP_BIN_NAME" argocd-vault-plugin
 
 #############################################################################
