@@ -1,5 +1,7 @@
 # syntax=docker/dockerfile:1
 
+ARG ARGOCD_BASE=argoproj/argocd:v2.4.12
+
 #############################################################################
 # Builder container                                                         #
 #############################################################################
@@ -23,7 +25,7 @@ RUN mv "$AVP_BIN_NAME" argocd-vault-plugin
 #############################################################################
 # Release container                                                         #
 #############################################################################
-FROM argoproj/argocd:v2.4.12 AS release
+FROM $ARGOCD_BASE AS release
 
 ARG TARGETARCH
 
